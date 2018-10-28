@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "service1",
+    "relationships": [
+        {
+            "relationshipName": "employee",
+            "otherEntityName": "employee",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "department"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "departmentName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "unique"
+            ]
+        }
+    ],
+    "changelogDate": "20181027143136",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "department",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "service1"
+}
