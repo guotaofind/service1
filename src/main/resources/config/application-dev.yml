@@ -39,22 +39,23 @@ spring:
         livereload:
             enabled: false # we use Webpack dev server + BrowserSync for livereload
     jackson:
-        serialization.indent_output: true
+        serialization:
+            indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-#        url: jdbc:h2:file:./target/h2db/db/service1;DB_CLOSE_DELAY=-1
-#        username: service1
-        url: jdbc:h2:file:../h2db/db/service1;DB_CLOSE_DELAY=-1
-        username: service1
-        password:
+        url: jdbc:sqlserver://localhost:1433;database=service1
+        username: SA
+        password: yourStrong(!)Password
         hikari:
             auto-commit: false
-    h2:
-        console:
-            enabled: false
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
     jpa:
-        database-platform: io.github.jhipster.domain.util.FixedH2Dialect
-        database: H2
+        database-platform: org.hibernate.dialect.SQLServer2012Dialect
+        database: SQL_SERVER
         show-sql: true
         properties:
             hibernate.id.new_generator_mappings: true

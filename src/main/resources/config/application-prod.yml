@@ -34,9 +34,9 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/service1?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
+        url: jdbc:sqlserver://localhost:1433;database=service1
+        username: SA
+        password: yourStrong(!)Password
         hikari:
             auto-commit: false
             data-source-properties:
@@ -45,8 +45,8 @@ spring:
                 prepStmtCacheSqlLimit: 2048
                 useServerPrepStmts: true
     jpa:
-        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-        database: MYSQL
+        database-platform: org.hibernate.dialect.SQLServer2012Dialect
+        database: SQL_SERVER
         show-sql: false
         properties:
             hibernate.id.new_generator_mappings: true
@@ -134,8 +134,8 @@ jhipster:
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx:
             enabled: true
-        prometheus: 
-            enabled: false #expose metrics via prometheus 
+        prometheus:
+            enabled: false #expose metrics via prometheus
         logs: # Reports Dropwizard metrics in the logs
             enabled: false
             report-frequency: 60 # in seconds
