@@ -30,18 +30,18 @@ import java.util.Collection;
 @SpringBootApplication
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
 @EnableDiscoveryClient
-public class Service1App {
+public class ServiceApp {
 
-    private static final Logger log = LoggerFactory.getLogger(Service1App.class);
+    private static final Logger log = LoggerFactory.getLogger(ServiceApp.class);
 
     private final Environment env;
 
-    public Service1App(Environment env) {
+    public ServiceApp(Environment env) {
         this.env = env;
     }
 
     /**
-     * Initializes service1.
+     * Initializes service.
      * <p>
      * Spring profiles can be configured with a program argument --spring.profiles.active=your-active-profile
      * <p>
@@ -66,7 +66,7 @@ public class Service1App {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(Service1App.class);
+        SpringApplication app = new SpringApplication(ServiceApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         logApplicationStartup(env);

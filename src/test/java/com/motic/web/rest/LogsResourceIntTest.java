@@ -1,6 +1,6 @@
 package com.motic.web.rest;
 
-import com.motic.Service1App;
+import com.motic.ServiceApp;
 import com.motic.config.SecurityBeanOverrideConfiguration;
 import com.motic.web.rest.vm.LoggerVM;
 import ch.qos.logback.classic.AsyncAppender;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see LogsResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service1App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServiceApp.class})
 public class LogsResourceIntTest {
 
     private MockMvc restLogsMockMvc;

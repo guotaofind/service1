@@ -1,6 +1,6 @@
 version: '2'
 services:
-    service1-sonar:
+    service-sonar:
         image: sonarqube:7.1
         ports:
             - 9001:9000

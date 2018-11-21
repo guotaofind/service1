@@ -1,7 +1,7 @@
 {
-  "name": "service-1",
+  "name": "service",
   "version": "0.0.0",
-  "description": "Description for service1",
+  "description": "Description for service",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

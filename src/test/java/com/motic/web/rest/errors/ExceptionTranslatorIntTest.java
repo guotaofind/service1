@@ -1,6 +1,6 @@
 package com.motic.web.rest.errors;
 
-import com.motic.Service1App;
+import com.motic.ServiceApp;
 import com.motic.config.SecurityBeanOverrideConfiguration;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service1App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServiceApp.class})
 public class ExceptionTranslatorIntTest {
 
     @Autowired

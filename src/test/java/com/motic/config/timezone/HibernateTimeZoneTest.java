@@ -1,6 +1,6 @@
 package com.motic.config.timezone;
 
-import com.motic.Service1App;
+import com.motic.ServiceApp;
 import com.motic.repository.timezone.DateTimeWrapper;
 import com.motic.repository.timezone.DateTimeWrapperRepository;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Unit tests for the UTC Hibernate configuration.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Service1App.class)
+@SpringBootTest(classes = ServiceApp.class)
 public class HibernateTimeZoneTest {
 
     @Autowired

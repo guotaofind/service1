@@ -1,6 +1,6 @@
 package com.motic.web.rest;
 
-import com.motic.Service1App;
+import com.motic.ServiceApp;
 
 import com.motic.config.SecurityBeanOverrideConfiguration;
 
@@ -38,7 +38,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @see DepartmentResource
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, Service1App.class})
+@SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServiceApp.class})
 public class DepartmentResourceIntTest {
 
     private static final String DEFAULT_DEPARTMENT_NAME = "AAAAAAAAAA";
