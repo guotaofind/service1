@@ -19,4 +19,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
+
+
 }

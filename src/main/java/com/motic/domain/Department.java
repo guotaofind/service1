@@ -28,7 +28,7 @@ public class Department implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "department_name", nullable = false, unique = true)
+    @Column(name = "department_name", nullable = false)
     private String departmentName;
 
     @OneToMany(mappedBy = "department")
