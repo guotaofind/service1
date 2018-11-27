@@ -36,7 +36,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:sqlserver://localhost:1433;database=service
         username: SA
-        password: 123456
+        password: yourStrong(!)Password
         hikari:
             auto-commit: false
             data-source-properties:

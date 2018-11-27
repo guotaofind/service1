@@ -1,6 +1,6 @@
 {
     "fluentMethods": true,
-    "clientRootFolder": "service1",
+    "clientRootFolder": "service",
     "relationships": [
         {
             "relationshipName": "manager",
@@ -15,7 +15,7 @@
             "relationshipValidateRules": [
                 "required"
             ],
-            "otherEntityField": "departmentName"
+            "otherEntityField": "name"
         }
     ],
     "fields": [
@@ -40,19 +40,19 @@
         },
         {
             "fieldName": "hireDate",
-            "fieldType": "Instant"
+            "fieldType": "Integer"
         },
         {
             "fieldName": "salary",
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "20181027144531",
+    "changelogDate": "20181122200014",
     "dto": "no",
     "searchEngine": false,
     "service": "no",
     "entityTableName": "employee",
     "jpaMetamodelFiltering": false,
     "pagination": "no",
-    "microserviceName": "service1"
+    "microserviceName": "service"
 }

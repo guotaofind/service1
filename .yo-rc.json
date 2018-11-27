@@ -23,7 +23,7 @@
     "serviceDiscoveryType": "eureka",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "YTJlNmE5NjhlNGI4YzNlZGEwMGFlODMyMDU0ZWIzNWFhZjlkNGFjY2VjMDM3OGQ2YmU5M2NiMGU2NDVkZGU4YmNlOGUwYmU4YzBlZDlhZTQ5NmUxZmNhZTMxMGQ4N2M2YTBkMGM3YmQ1ODcxZjczMGNjMThiMWY1NWI0OTgzYjU=",
+    "jwtSecretKey": "ZWVkYjkxMTM5OTRhYjVhNWE1Y2M2NmY2MjEzZDMxNDRiODk2OGI5NWI3NDM4M2Q0OWYxZWZmMTAxMDczZWYwOTZhN2RmYzZiNTM2MWQzMDU5NDAyMTlkYjczN2YwYmY0ZDI0NTI1OGRjNmI4MTgyNTlhMzY1MjkzYmM2M2E5NDc=",
     "enableTranslation": true,
     "languages": [
       "zh-cn",

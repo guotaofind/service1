@@ -8,7 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -40,7 +39,7 @@ public class Employee implements Serializable {
     private String phoneNumber;
 
     @Column(name = "hire_date")
-    private Instant hireDate;
+    private Integer hireDate;
 
     @Column(name = "salary")
     private Long salary;
@@ -51,7 +50,7 @@ public class Employee implements Serializable {
 
     @ManyToOne(optional = false)
     @NotNull
-    @JsonIgnoreProperties("employees")
+    @JsonIgnoreProperties("")
     private Department department;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
@@ -115,16 +114,16 @@ public class Employee implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Instant getHireDate() {
+    public Integer getHireDate() {
         return hireDate;
     }
 
-    public Employee hireDate(Instant hireDate) {
+    public Employee hireDate(Integer hireDate) {
         this.hireDate = hireDate;
         return this;
     }
 
-    public void setHireDate(Instant hireDate) {
+    public void setHireDate(Integer hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -196,7 +195,7 @@ public class Employee implements Serializable {
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +
-            ", hireDate='" + getHireDate() + "'" +
+            ", hireDate=" + getHireDate() +
             ", salary=" + getSalary() +
             "}";
     }

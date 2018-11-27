@@ -41,8 +41,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = {SecurityBeanOverrideConfiguration.class, ServiceApp.class})
 public class DepartmentResourceIntTest {
 
-    private static final String DEFAULT_DEPARTMENT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_DEPARTMENT_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
 
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -82,7 +82,7 @@ public class DepartmentResourceIntTest {
      */
     public static Department createEntity(EntityManager em) {
         Department department = new Department()
-            .departmentName(DEFAULT_DEPARTMENT_NAME);
+            .name(DEFAULT_NAME);
         return department;
     }
 
@@ -106,7 +106,7 @@ public class DepartmentResourceIntTest {
         List<Department> departmentList = departmentRepository.findAll();
         assertThat(departmentList).hasSize(databaseSizeBeforeCreate + 1);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
-        assertThat(testDepartment.getDepartmentName()).isEqualTo(DEFAULT_DEPARTMENT_NAME);
+        assertThat(testDepartment.getName()).isEqualTo(DEFAULT_NAME);
     }
 
     @Test
@@ -130,10 +130,10 @@ public class DepartmentResourceIntTest {
 
     @Test
     @Transactional
-    public void checkDepartmentNameIsRequired() throws Exception {
+    public void checkNameIsRequired() throws Exception {
         int databaseSizeBeforeTest = departmentRepository.findAll().size();
         // set the field null
-        department.setDepartmentName(null);
+        department.setName(null);
 
         // Create the Department, which fails.
 
@@ -157,7 +157,7 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(department.getId().intValue())))
-            .andExpect(jsonPath("$.[*].departmentName").value(hasItem(DEFAULT_DEPARTMENT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
     
     @Test
@@ -171,7 +171,7 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(department.getId().intValue()))
-            .andExpect(jsonPath("$.departmentName").value(DEFAULT_DEPARTMENT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
 
     @Test
@@ -195,7 +195,7 @@ public class DepartmentResourceIntTest {
         // Disconnect from session so that the updates on updatedDepartment are not directly saved in db
         em.detach(updatedDepartment);
         updatedDepartment
-            .departmentName(UPDATED_DEPARTMENT_NAME);
+            .name(UPDATED_NAME);
 
         restDepartmentMockMvc.perform(put("/api/departments")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -206,7 +206,7 @@ public class DepartmentResourceIntTest {
         List<Department> departmentList = departmentRepository.findAll();
         assertThat(departmentList).hasSize(databaseSizeBeforeUpdate);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
-        assertThat(testDepartment.getDepartmentName()).isEqualTo(UPDATED_DEPARTMENT_NAME);
+        assertThat(testDepartment.getName()).isEqualTo(UPDATED_NAME);
     }
 
     @Test

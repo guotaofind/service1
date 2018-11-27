@@ -27,7 +27,7 @@ public class DepartmentResource {
 
     private final Logger log = LoggerFactory.getLogger(DepartmentResource.class);
 
-    private static final String ENTITY_NAME = "service1Department";
+    private static final String ENTITY_NAME = "serviceDepartment";
 
     private final DepartmentRepository departmentRepository;
 

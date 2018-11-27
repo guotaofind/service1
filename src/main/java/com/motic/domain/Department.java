@@ -1,6 +1,5 @@
 package com.motic.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,8 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -28,12 +25,9 @@ public class Department implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "department_name", nullable = false)
-    private String departmentName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @OneToMany(mappedBy = "department")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Employee> employees = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -43,42 +37,17 @@ public class Department implements Serializable {
         this.id = id;
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public String getName() {
+        return name;
     }
 
-    public Department departmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public Department name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public Department employees(Set<Employee> employees) {
-        this.employees = employees;
-        return this;
-    }
-
-    public Department addEmployee(Employee employee) {
-        this.employees.add(employee);
-        employee.setDepartment(this);
-        return this;
-    }
-
-    public Department removeEmployee(Employee employee) {
-        this.employees.remove(employee);
-        employee.setDepartment(null);
-        return this;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    public void setName(String name) {
+        this.name = name;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -106,7 +75,7 @@ public class Department implements Serializable {
     public String toString() {
         return "Department{" +
             "id=" + getId() +
-            ", departmentName='" + getDepartmentName() + "'" +
+            ", name='" + getName() + "'" +
             "}";
     }
 }
