@@ -10,6 +10,10 @@
                 "required",
                 "unique"
             ]
+        },
+        {
+            "fieldName": "numberOfEmployee",
+            "fieldType": "Long"
         }
     ],
     "changelogDate": "20181122195529",

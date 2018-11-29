@@ -44,6 +44,9 @@ public class DepartmentResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final Long DEFAULT_NUMBER_OF_EMPLOYEE = 1L;
+    private static final Long UPDATED_NUMBER_OF_EMPLOYEE = 2L;
+
     @Autowired
     private DepartmentRepository departmentRepository;
 
@@ -82,7 +85,8 @@ public class DepartmentResourceIntTest {
      */
     public static Department createEntity(EntityManager em) {
         Department department = new Department()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .numberOfEmployee(DEFAULT_NUMBER_OF_EMPLOYEE);
         return department;
     }
 
@@ -107,6 +111,7 @@ public class DepartmentResourceIntTest {
         assertThat(departmentList).hasSize(databaseSizeBeforeCreate + 1);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
         assertThat(testDepartment.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testDepartment.getNumberOfEmployee()).isEqualTo(DEFAULT_NUMBER_OF_EMPLOYEE);
     }
 
     @Test
@@ -157,7 +162,8 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(department.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].numberOfEmployee").value(hasItem(DEFAULT_NUMBER_OF_EMPLOYEE.intValue())));
     }
     
     @Test
@@ -171,7 +177,8 @@ public class DepartmentResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(department.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.numberOfEmployee").value(DEFAULT_NUMBER_OF_EMPLOYEE.intValue()));
     }
 
     @Test
@@ -195,7 +202,8 @@ public class DepartmentResourceIntTest {
         // Disconnect from session so that the updates on updatedDepartment are not directly saved in db
         em.detach(updatedDepartment);
         updatedDepartment
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .numberOfEmployee(UPDATED_NUMBER_OF_EMPLOYEE);
 
         restDepartmentMockMvc.perform(put("/api/departments")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -207,6 +215,7 @@ public class DepartmentResourceIntTest {
         assertThat(departmentList).hasSize(databaseSizeBeforeUpdate);
         Department testDepartment = departmentList.get(departmentList.size() - 1);
         assertThat(testDepartment.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testDepartment.getNumberOfEmployee()).isEqualTo(UPDATED_NUMBER_OF_EMPLOYEE);
     }
 
     @Test

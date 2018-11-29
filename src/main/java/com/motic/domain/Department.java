@@ -28,6 +28,9 @@ public class Department implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "number_of_employee")
+    private Long numberOfEmployee;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -48,6 +51,19 @@ public class Department implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getNumberOfEmployee() {
+        return numberOfEmployee;
+    }
+
+    public Department numberOfEmployee(Long numberOfEmployee) {
+        this.numberOfEmployee = numberOfEmployee;
+        return this;
+    }
+
+    public void setNumberOfEmployee(Long numberOfEmployee) {
+        this.numberOfEmployee = numberOfEmployee;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -76,6 +92,7 @@ public class Department implements Serializable {
         return "Department{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", numberOfEmployee=" + getNumberOfEmployee() +
             "}";
     }
 }
