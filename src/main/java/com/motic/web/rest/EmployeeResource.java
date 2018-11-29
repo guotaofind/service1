@@ -1,7 +1,9 @@
 package com.motic.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.motic.domain.Department;
 import com.motic.domain.Employee;
+import com.motic.repository.DepartmentRepository;
 import com.motic.repository.EmployeeRepository;
 import com.motic.web.rest.errors.BadRequestAlertException;
 import com.motic.web.rest.util.HeaderUtil;
@@ -29,9 +31,12 @@ public class EmployeeResource {
 
     private static final String ENTITY_NAME = "serviceEmployee";
 
+    private final DepartmentRepository departmentRepository;
+
     private final EmployeeRepository employeeRepository;
 
-    public EmployeeResource(EmployeeRepository employeeRepository) {
+    public EmployeeResource(DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
+        this.departmentRepository = departmentRepository;
         this.employeeRepository = employeeRepository;
     }
 
@@ -50,6 +55,9 @@ public class EmployeeResource {
             throw new BadRequestAlertException("A new employee cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Employee result = employeeRepository.save(employee);
+        Department department = employee.getDepartment();
+        long numberOfEmployee = employeeRepository.countByDepartment(department);
+        departmentRepository.save(department.numberOfEmployee(numberOfEmployee));
         return ResponseEntity.created(new URI("/api/employees/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

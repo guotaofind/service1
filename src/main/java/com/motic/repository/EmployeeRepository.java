@@ -1,5 +1,6 @@
 package com.motic.repository;
 
+import com.motic.domain.Department;
 import com.motic.domain.Employee;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
@@ -12,4 +13,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
+    long countByDepartment(Department department);
 }

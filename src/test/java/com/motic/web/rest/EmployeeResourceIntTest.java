@@ -6,6 +6,7 @@ import com.motic.config.SecurityBeanOverrideConfiguration;
 
 import com.motic.domain.Employee;
 import com.motic.domain.Department;
+import com.motic.repository.DepartmentRepository;
 import com.motic.repository.EmployeeRepository;
 import com.motic.web.rest.errors.ExceptionTranslator;
 
@@ -61,6 +62,9 @@ public class EmployeeResourceIntTest {
     private static final Long UPDATED_SALARY = 2L;
 
     @Autowired
+    private DepartmentRepository departmentRepository;
+
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     @Autowired
@@ -82,7 +86,7 @@ public class EmployeeResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EmployeeResource employeeResource = new EmployeeResource(employeeRepository);
+        final EmployeeResource employeeResource = new EmployeeResource(departmentRepository, employeeRepository);
         this.restEmployeeMockMvc = MockMvcBuilders.standaloneSetup(employeeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
